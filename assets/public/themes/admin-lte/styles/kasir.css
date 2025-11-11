@@ -1,0 +1,317 @@
+#content_left, #content_right {
+    margin: 5px;
+}
+#content_right #div_member_wrapper {
+    height: auto;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#content_right #div_member_wrapper #div_member_content, #content_right #div_member_wrapper #div_kode_penjualan {
+    text-align: right;
+}
+
+@media (min-width: 768px)
+.col-sm-12 {
+    width: 100%;
+}
+@media (min-width: 768px)
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+    float: left;
+}
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#content_right #div_member_wrapper #div_member_content, #content_right #div_member_wrapper #div_kode_penjualan {
+    text-align: right;
+}
+#content_right #div_member_wrapper #div_member_content {
+    padding-left: 0px;
+}
+
+
+#content_right #div_settingan_wrapper {
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#content_right #settingan_penjualan {
+    padding-right: 0;
+    padding-left: 0;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+element.style {
+    height: 352px;
+}
+
+#content_right #div_cart_wrapper {
+    overflow: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#content_right #div_cart_empty {
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    position: absolute;
+}
+#content_right #div_total_wrapper {
+    height: 50px;
+    background-color: #4AA231;
+    border: 4px solid #499234;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#content_right #div_total_wrapper #div_detail_total {
+    text-align: center;
+    font-size: 13px;
+    position: absolute;
+    background-color: #499234;
+    display: none;
+}
+
+#content_right #div_total_wrapper #div_total {
+    padding-top: 3px;
+    position: relative;
+}
+#content_right #div_proses_wrapper {
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#content_right #div_proses, #content_right #div_proses_batal, #content_right #div_simpan_sementara {
+    padding: 0;
+}
+.col-xs-4 {
+    width: 33.33333333%;
+}
+
+#content_right #div_proses .btn-lg, #content_right #div_proses_batal .btn-lg, #content_right #div_simpan_sementara .btn-lg {
+    font-size: 26px;
+    border-radius: 0;
+    min-height: 50px;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+#content_right #div_proses, #content_right #div_proses_batal, #content_right #div_simpan_sementara {
+    padding: 0;
+}
+.col-xs-4 {
+    width: 33.33333333%;
+}
+
+#content_right #div_proses .btn-lg, #content_right #div_proses_batal .btn-lg, #content_right #div_simpan_sementara .btn-lg {
+    font-size: 26px;
+    border-radius: 0;
+    min-height: 50px;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+#content_right #div_proses, #content_right #div_proses_batal, #content_right #div_simpan_sementara {
+    padding: 0;
+}
+.col-xs-4 {
+    width: 33.33333333%;
+}
+
+#content_right #div_proses .btn-lg, #content_right #div_proses_batal .btn-lg, #content_right #div_simpan_sementara .btn-lg {
+    font-size: 26px;
+    border-radius: 0;
+    min-height: 50px;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+#content_left, #content_right {
+    margin: 5px;
+}

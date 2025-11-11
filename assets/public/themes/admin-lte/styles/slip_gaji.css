@@ -1,0 +1,476 @@
+    /* General */
+
+
+    table.no_border td{
+        border: 0 !important;
+        text-align: center;
+    }
+    .table_no{
+        text-align: center !important;
+        vertical-align: middle;
+        width: 20px !important;
+    }
+    
+    table{
+        border-collapse:collapse;
+        margin:0;
+        width:100%;
+        background-color: white;
+        border: 1px #B1BABF solid;
+        position: relative;
+    }
+    table th{
+        vertical-align: middle;
+        background-color: gainsboro;
+        background: #E6E6E6 url(/images/table_header.png) 50% 50% repeat-x;
+        color: #302f2f;
+    }
+    table td{
+        position: relative;
+        text-align:left;
+        vertical-align: top;
+    }
+    table th,
+    table td{
+        border-right: 1px solid #B1BABF;
+        border-bottom: 1px solid #B1BABF;
+        white-space: nowrap;
+        padding: 7px;
+    }
+    table th{
+        border-top: 1px solid #B1BABF !important;
+    }
+    table th:first-child,
+    table td:first-child{
+        border-left: 1px solid #B1BABF;
+    }
+    table input{
+        width: inherit;
+    }
+    table td input, 
+    table td select{
+        width: inherit;
+        /*height: 100%;*/
+        margin: 0 auto;
+        border: 0;
+        padding: 0;
+    }
+    table td a{
+        width: auto;
+        padding: 0;
+        margin: 0;
+    }
+    table tfoot{
+        border-top: 2px solid #CCC;
+        background: #CCC url(/images/table_footer.png) 50% 50% repeat-x;
+    }
+    table input[type=checkbox], 
+    table input[type=radio]{
+        margin: 0;
+    }
+    td.label{
+        font-size: inherit;
+    }
+    td label.error{
+        display: table-cell;
+        top: 5px;
+        padding: 5px;
+        width: auto;
+        min-width: 70px;
+        border: 0px solid #FE1902 !important;
+        color: red !important;
+        font-weight: normal !important;
+        z-index: 0;
+        padding: 0 !important;
+        text-align: right;
+    }
+    table td input.error{
+        /*height: 100% !important;*/
+    }
+    td input.ui-state-highlight, input.error {
+        text-align: inherit;
+        display: inline;
+        width: 100%;
+        border: 1px solid red !important;
+        margin: 0;
+    }
+    
+    .simple_table table{
+        width:100%;
+        border: 0px;
+        margin: 0;
+        padding: 0;
+    }
+    .simple_table th{
+        width:auto;
+        border: 0px;
+    }
+    .simple_table td{
+        padding:0;
+        border:1px solid #B1BABF;
+    }
+    
+    table.table_no_border{
+        border: 0px !important;
+    }
+    .table_no_border tr{
+        border: 0px;
+    }
+    .table_no_border td{
+        border: 0px;
+    }
+    
+    table tr.cancel{
+        background-color: #D0CECE !important;
+        color: black;
+    }
+    table tr.cancel:hover{
+        background-color: #D0CECE !important;
+        color: black;
+    }
+    
+    table tr.inactive{
+        background-color: #D0CECE !important;
+        color: black;
+    }
+    table tr.inactive:hover{
+        background-color: #D0CECE !important;
+        color: black;
+    }
+    
+    table td.keterangan_nota_absolute {
+        border: 0 !important;
+    }
+    table td.keterangan_nota_absolute .keterangan_nota_absolute_wrapper{
+      position: relative !important;
+    }
+    table td.keterangan_nota_absolute .keterangan_nota_absolute_content{
+        display: block !important;
+      position: absolute !important;
+      top: 0px !important; 
+      left: 5px; 
+      width:95%;
+    }
+    
+    /* Overide Bootsrap */
+    .table>tbody>tr>td, 
+    .table>tbody>tr>th, 
+    .table>tfoot>tr>td, 
+    .table>tfoot>tr>th, 
+    .table>thead>tr>td, 
+    .table>thead>tr>th{
+        border-top: 1px solid silver;
+    }
+    .table{
+        margin-bottom: 0
+    }
+    table tbody label{
+        font-weight: normal;
+    }
+    
+    /* Pagination on table */
+    .pagination_wraper{
+        position: relative;
+        bottom: 0;
+        height: auto;
+        vertical-align: middle;
+        width: auto;
+    }
+    .pagination_wraper a{
+        color: black !important;
+    }
+    .pagination{
+        margin: 0;
+        /*font-size: 14px;*/
+    }
+    .pagination a{
+        padding: 0 !important;
+        vertical-align: inherit !important;
+    }
+    .pagination_info{
+        float: left;
+    }
+    .pagination_page{
+        float: right;
+    }
+    .pagination_page a{
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+    }
+    .pagination_page .current, .pagination_page a.current{
+        font-weight: bolder;
+        font-size: 15px;
+        color: #369bd7 !important;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .pagination_page a.disabled{
+        background-color: #f3f0ee !important;
+        border: 1px solid silver !important;
+        cursor: not-allowed !important;
+        color: #5C5353 !important;
+        font-weight: normal;
+    }
+    .pagination_page a.disabled:hover{
+        text-decoration: none;
+    }
+    
+    /* Datatable */
+    .no_data_table{
+        overflow: auto;
+    }
+    #div_data_table.no_data_table  table{
+        border: 1px solid;
+    }
+    #div_data_table{
+        opacity: 0;
+        
+    }
+    #div_data_table:before{
+        /*opacity: 100;
+        content: "Loading...";*/
+    }
+    #div_data_table table{
+        border: 0;
+    }
+    #div_data_table table.dataTable thead th{
+        /*border-bottom: 0;*/
+    }
+    #div_data_table table.dataTable thead th, 
+    #div_data_table table.dataTable thead td,
+    #div_data_table table.dataTable tbody th, 
+    #div_data_table table.dataTable tbody td{
+        padding: 7px;
+        white-space: nowrap;
+    }
+    #div_data_table table.dataTable thead th, 
+    #div_data_table table.dataTable thead td {
+        
+    }
+     
+    #div_data_table table.dataTable tbody td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #div_data_table table.dataTable tfoot th, 
+    #div_data_table table.dataTable tfoot td {
+        /*padding: 10px 18px 6px 18px;*/
+        border-top: 0px solid #111;
+    }
+    #div_data_table .dataTables_scrollFootInner,
+    #div_data_table .dataTables_scrollFootInner table{
+        width: 100% !important;
+    }
+    
+    #div_data_table tbody tr:hover{
+        background-color: #FFFAD1 !important;
+        color: black !important;
+    }
+    .dataTable tbody tr.odd{
+        background-color: #F9F9F9;
+    }
+    .dataTable tbody tr.odd td.sorting_1{
+        background-color: transparent;
+    }
+    .dataTable tbody tr.even, .dataTable tbody tr.even td.sorting_1{
+        background-color: transparent;
+    }
+    .dataTable tbody tr:hover, .dataTable tbody tr:hover .sorting_1{
+        /*background-color: #FFFAD1 !important;*/
+    }
+    
+    .dataTable tbody td:hover, 
+    .dataTable tbody .row_selected td:hover, 
+    .dataTable tbody td.sorting_1:hover {
+        background-color: #369BD7 !important;;
+        color: white !important;
+    }
+    .dataTable tbody td:hover a{
+        display: inline-block;
+        width: 100%;
+        color: white;
+        /*text-decoration: underline;*/
+    }
+    .dataTable tbody td a:hover{
+        color: white;
+        text-decoration: underline;
+    }
+    .dataTable tbody td:hover input{
+        color: initial !important;
+    }
+    .dataTable tbody .row_selected, 
+    .dataTable tbody .row_selected td{
+        background-color: #FFFAD1;
+        color: black;
+    }
+    .dataTable td.dataTables_empty {
+        text-align: left;
+    }
+    
+    /* ------------ CSS for Data Transaksi Table -------*/
+    .div_transaksi_table{
+        overflow: auto;
+        border-bottom: 1px solid #B1BABF;
+    }
+    /*.div_transaksi_table table{
+        width: auto !important;    
+    }*/
+    .div_transaksi_table table tbody tr:hover td{
+        /*background-color: #f3f3f3;*/
+        /*background-color: #fffce9;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;*/
+    }
+    .div_transaksi_table table tbody tr td{
+        height: 28px;
+        text-align: left;
+        margin: 0 !important;
+        padding: 2px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        background-color: transparent;
+        /*vertical-align: middle;*/
+    }
+    .div_transaksi_table table td img{
+        margin-top: 2px !important;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        display: inline-block;
+        width: auto;
+        margin: 0 auto;
+        min-width: 20px;
+        padding: 0 5px;
+    }
+    .div_transaksi_table table td input, 
+    .div_transaksi_table table td select{
+        width: 99%;
+        /*height: 100% !important;*/
+        min-height: 27px;
+        display: block;
+        margin: 0 auto !important;
+        border: 1px solid #E4E3E3;
+        padding: 0px 5px;
+        background-color: #fff;
+    }
+    .div_transaksi_table table tr td input[type="checkbox"], 
+    .div_transaksi_table table tr td input[type="radio"]{
+        display: inline;
+        height: auto !important;
+        width: auto !important;
+        padding: 0px !important;
+        /*margin-left: 5px !important;*/
+        margin-top: 0px !important;
+    }
+    
+    .div_transaksi_table table td input:hover, 
+    .div_transaksi_table table td select:hover{
+        background-color: #F9F8E7;
+    }
+    .div_transaksi_table table td span{
+        /*margin: 4px !important;*/
+        /*vertical-align: top;*/
+        white-space: nowrap;
+        /*display: inline-block;*/
+        width: auto;
+        /*padding: 5px;*/
+    }
+    .div_transaksi_table table td label, 
+    .div_transaksi_table table td a{
+        padding: 5px;
+        background-color: transparent !important;
+        border: 0;
+        width: auto;
+        min-width: 10px;
+        vertical-align: middle;
+        margin: 0;
+        font-weight: normal;
+        font-size: inherit;
+    }
+    .div_transaksi_table table td a{
+        /*color: #086590;*/
+    }
+    
+    .dataTables_wrapper.no-footer .dataTables_scrollBody{
+        border-bottom: 1px solid #b1babf;
+    }
+    
+    @media screen and (max-width: 769px) {
+        .div_transaksi_table{
+            /*agar ketika di IPhone waktu scroll ke samping dengan cara menekan textbox berfungsi*/
+            -webkit-overflow-scrolling: touch;
+        }
+        .div_transaksi_table table{
+            min-width: 1000px;
+        }
+        .div_transaksi_table table tbody tr td{
+            padding: 10px;
+        }
+    }
+      /*@media print{
+        body{
+          font-size: 0.5em !important;
+        }
+        th, td{
+          font-size: 0.5em !important; 
+          padding: 2px !important;
+        }
+        td{
+          border: 0 !important;
+        }
+        tr{
+          height: auto !important;
+        }
+      }*/
+      .box_info{
+        float: left;
+        margin: 5px
+      }
+    
+      .box_info div{
+        border: solid 1px silver;
+        text-align: center;
+        width: 125px;
+        padding: 3px;
+      }
+      .box_info_head{
+        border-bottom: 0 !important;
+      }
+    
+      .box_info div label{
+        display: inline-block;
+        width: 90px;
+        font-weight: bold;
+        
+      }
+    
+      .info_costumer{
+        display: inline-block;
+        width: 30px;
+      }
+    
+      .info_faktur{
+        
+      }
+    
+      .nota table th, .nota table td{
+        /*border: 1px solid black;*/
+      }
+    
+      .summary{
+        vertical-align: middle;
+      }
+    
+      .logo_faktur{
+        margin-right: 15px !important;
+      }
+      #sidebar{
+        display: none
+      }
+      #content_a4 {
+        padding: 20px;
+        margin: 0;
+    }
