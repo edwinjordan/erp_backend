@@ -26,10 +26,12 @@ class Auth extends MX_Controller {
             'tm_karyawan.fc_kdarea'  => $area,
             'tm_karyawan.fc_kddivisi' => $divisi
         );
+      
         $cek_login = $this->M_user->where($where);
-       
+      
         if($cek_login->num_rows() > 0){
             $sql = $cek_login->result_array();
+            
             $menu_main = $this->M_user->get_menu_main($sql[0]['f_deptid'])->result_array();
             $menu_sub = $this->M_user->get_menu_sub($sql[0]['f_deptid'])->result_array();
             // $posisi = $this->M_user->get_posisi($sql[0]['id_posisi'])->result();
@@ -37,10 +39,9 @@ class Auth extends MX_Controller {
             foreach($sql as $key) {
                 $items = $key;
             }
-
+            
             // Prepare user data for JWT token (exclude sensitive data)
             $jwt_user_data = array(
-                'fv_userid' => $items['fv_userid'],
                 'fv_username' => $items['fv_username'],
                 'fv_nama' => $items['fv_nama'],
                 'f_deptid' => $items['f_deptid'],
