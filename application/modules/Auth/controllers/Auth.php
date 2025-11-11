@@ -10,6 +10,7 @@ class Auth extends MX_Controller {
         parent::__construct();
         $this->load->model('M_user');
         $this->load->library('session');
+        $this->load->library('JWT_Auth');
     }
 
     public function login(){
@@ -25,10 +26,12 @@ class Auth extends MX_Controller {
             'tm_karyawan.fc_kdarea'  => $area,
             'tm_karyawan.fc_kddivisi' => $divisi
         );
+      
         $cek_login = $this->M_user->where($where);
-       
+      
         if($cek_login->num_rows() > 0){
             $sql = $cek_login->result_array();
+            
             $menu_main = $this->M_user->get_menu_main($sql[0]['f_deptid'])->result_array();
             $menu_sub = $this->M_user->get_menu_sub($sql[0]['f_deptid'])->result_array();
             // $posisi = $this->M_user->get_posisi($sql[0]['id_posisi'])->result();
@@ -36,6 +39,21 @@ class Auth extends MX_Controller {
             foreach($sql as $key) {
                 $items = $key;
             }
+            
+            // Prepare user data for JWT token (exclude sensitive data)
+            $jwt_user_data = array(
+                'fv_username' => $items['fv_username'],
+                'fv_nama' => $items['fv_nama'],
+                'f_deptid' => $items['f_deptid'],
+                'fc_kdarea' => $area,
+                'fc_kddivisi' => $divisi,
+                'fv_nmarea' => $sql[0]['fv_nmarea'],
+                'fv_nmdivisi' => $sql[0]['fv_nmdivisi']
+            );
+
+            // Generate JWT tokens
+            $access_token = $this->jwt_auth->generate_token($jwt_user_data, false);
+            $refresh_token = $this->jwt_auth->generate_token($jwt_user_data, true);
 
             // $items_submenu = array();
             // foreach($menu_android as $key_submenu) {
@@ -50,10 +68,16 @@ class Auth extends MX_Controller {
             $data['nama_divisi'] = $sql[0]['fv_nmdivisi'];
             $data['mainmenu'] = $menu_main;
             $data['submenu'] = $menu_sub;
+            // JWT tokens
+            $data['access_token'] = $access_token;
+            $data['refresh_token'] = $refresh_token;
+            $data['token_type'] = 'Bearer';
+            $data['expires_in'] = 3600; // 1 hour
             // $data['posisi'] = $posisi[0];
             die(json_encode($data));
         }else{
             $data['success'] = 'failed';
+            $data['message'] = 'Invalid credentials';
             die(json_encode($data));
         }
     }
@@ -83,6 +107,21 @@ class Auth extends MX_Controller {
                 $items = $key;
             }
 
+            // Prepare user data for JWT token (exclude sensitive data)
+            $jwt_user_data = array(
+                'fv_userid' => $items['fv_userid'],
+                'fv_username' => $items['fv_username'],
+                'fv_nama' => $items['fv_nama'],
+                'f_deptid' => $items['f_deptid'],
+                'fc_kdarea' => $area,
+                'fc_kddivisi' => $divisi,
+                'platform' => 'android'
+            );
+
+            // Generate JWT tokens
+            $access_token = $this->jwt_auth->generate_token($jwt_user_data, false);
+            $refresh_token = $this->jwt_auth->generate_token($jwt_user_data, true);
+
             $this->session->set_userdata($items);
             $data['success'] = 'success';
             $data['data'] = $items;
@@ -91,9 +130,15 @@ class Auth extends MX_Controller {
            // $data['mainmenu'] = $menu_main;
             $data['submenu'] = $menu_sub;
             $data['posisi'] = $posisi[0];
+            // JWT tokens
+            $data['access_token'] = $access_token;
+            $data['refresh_token'] = $refresh_token;
+            $data['token_type'] = 'Bearer';
+            $data['expires_in'] = 3600; // 1 hour
             die(json_encode($data));
         }else{
             $data['success'] = 'failed';
+            $data['message'] = 'Invalid credentials';
             die(json_encode($data));
         }
     }
@@ -122,6 +167,93 @@ class Auth extends MX_Controller {
 
     public function getArea(){
         echo json_encode($this->M_user->getarea()->result_array());
+    }
+
+    /**
+     * Refresh access token using refresh token
+     * POST: refresh_token
+     */
+    public function refresh_token(){
+        $refresh_token = $this->input->post('refresh_token');
+        
+        if (!$refresh_token) {
+            $data['success'] = 'failed';
+            $data['message'] = 'Refresh token is required';
+            die(json_encode($data));
+        }
+
+        $new_access_token = $this->jwt_auth->refresh_access_token($refresh_token);
+        
+        if ($new_access_token) {
+            $data['success'] = 'success';
+            $data['access_token'] = $new_access_token;
+            $data['token_type'] = 'Bearer';
+            $data['expires_in'] = 3600;
+            die(json_encode($data));
+        } else {
+            $data['success'] = 'failed';
+            $data['message'] = 'Invalid or expired refresh token';
+            die(json_encode($data));
+        }
+    }
+
+    /**
+     * Validate token and return user data
+     * Header: Authorization: Bearer <token>
+     */
+    public function validate_token(){
+        $decoded = $this->jwt_auth->validate_token();
+        
+        if ($decoded) {
+            $user_data = $this->jwt_auth->get_user_data($decoded);
+            $data['success'] = 'success';
+            $data['valid'] = true;
+            $data['user'] = $user_data;
+            $data['expires_at'] = date('Y-m-d H:i:s', $decoded->exp);
+            die(json_encode($data));
+        } else {
+            $data['success'] = 'failed';
+            $data['valid'] = false;
+            $data['message'] = 'Invalid or expired token';
+            die(json_encode($data));
+        }
+    }
+
+    /**
+     * Get current user from token
+     * Header: Authorization: Bearer <token>
+     */
+    public function me(){
+        $decoded = $this->jwt_auth->validate_token();
+        
+        if ($decoded) {
+            $user_data = $this->jwt_auth->get_user_data($decoded);
+            
+            // Get full user data from database
+            if (isset($user_data['fv_userid'])) {
+                $where = array('fv_userid' => $user_data['fv_userid']);
+                $user_query = $this->M_user->where($where);
+                
+                if ($user_query->num_rows() > 0) {
+                    $user_full = $user_query->row_array();
+                    // Remove password from response
+                    unset($user_full['fv_password']);
+                    
+                    $data['success'] = 'success';
+                    $data['user'] = $user_full;
+                    die(json_encode($data));
+                }
+            }
+            
+            $data['success'] = 'failed';
+            $data['message'] = 'User not found';
+            die(json_encode($data));
+        } else {
+            $data['success'] = 'failed';
+            $data['message'] = 'Unauthorized - Invalid or expired token';
+            http_response_code(401);
+            die(json_encode($data));
+        }
     }
 
 }	
